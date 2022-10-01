@@ -1,11 +1,20 @@
-<div class="container">
+@extends('layouts.layout')
+
+@section('content')
+  <div class="container">
     <div class="row justify-content-center">
       <div class="col col-md-offset-3 col-md-6">
         <nav class="card mt-5">
           <div class="card-header">会員登録</div>
           <div class="card-body">
-            
-            <form action="" method="POST">
+            @if($errors->any())
+              <div class="alert alert-danger">
+                @foreach($errors->all() as $message)
+                  <p>{{ $message }}</p>
+                @endforeach
+              </div>
+            @endif
+            <form action="{{ route('register') }}" method="POST">
               @csrf
               <div class="form-group">
                 <label for="email">メールアドレス</label>
@@ -32,3 +41,4 @@
       </div>
     </div>
   </div>
+@endsection

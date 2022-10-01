@@ -8,6 +8,13 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    public function cart(){
+        return $this->hasMany('App\Cart');
+    }
+    public function bread(){
+        return $this->hasMany('App\Bread');
+    }
+    
     use Notifiable;
 
     /**

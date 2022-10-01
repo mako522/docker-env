@@ -1,32 +1,26 @@
+
+@extends('layouts.layout')
+@section('content')
 <div class="card-header">
-    @guest
-        Laravel
-    @else
-        Hello, {{ Auth::user()->name }} !!
-    @endguest
+    
+    <div style="width:700px;height:300px;background:#ced;border:1px solid #a7e;">スライド</div>
 </div>
 <div class="card-body">
-    @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif
+    
     <div class="links">
-        @guest
-            <a href="">>ログイン</a>
-            <a href="">>登録</a>
-            <a href="">検索</a>
-        @else
-            <a href="">ユーザー情報編集</a>
-            <a href="">ユーザー検索</a>
-            <a href=""
-               onclick="event.preventDefault();
-        document.getElementById('logout-form').submit();">
-                ログアウト
-            </a>
+        <p>Today's Bread</p>
+        <p>パン１</p>
+            
+                <a href="{{ route('bread.detail', $bread->id) }}">選択</a>
+                <p>パン２</p>
+                <a href="">選択</a>
+                <p>パン３</p>
+                <a href="">選択</a>
+            
             <form id="logout-form" action="" method="POST" style="display: none;">
                 @csrf
             </form>
-        @endguest
+        
     </div>
 </div>
+@endsection
