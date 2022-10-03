@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Bread;
+use App\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateData;
@@ -12,23 +12,21 @@ use Illuminate\Support\Facades\Hash;
 
 class DisplayController extends Controller
 {
-    public function breadDetail(Bread $breads)
+    public function breadDetail($id)
     {   
-        
-        return view('breads/bread_form',[
-           'breads'=>$breads,
-       ]);
+        $product = \App\Product::findOrFail($id);
+        $user = \App\User::findOrFail($id);
+        return view('iteminfo',[
+            'product' => $product,
+            'user' => $user,
+        ]);
     }
     public function index(){
-        $bread=new Bread;
+        $product = new Product;
 
-        $breads = $bread->all();
+        $products = $product->all();
 
-        $all = $bread->all()->toArray();
-
-        return view('home',compact('breads'));
+        return view('home',compact('products'));
             
-        
-
     }
 }

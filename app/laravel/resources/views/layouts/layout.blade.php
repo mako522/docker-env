@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', '家計簿') }}</title>
+    <title>{{ config('app.name', 'パン屋') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -27,7 +27,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     中村屋
                 </a>
-                <button type='button' class='btn btn-primary'>追加</button>
+                <button type='button' class='btn btn-primary' href="{{route('create.category')}}">追加</button>
             </div>
             <div class="my-navbar-control">
                 @if(Auth::check())

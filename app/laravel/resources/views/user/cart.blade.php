@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.layout')
 
 @section('content')
 
@@ -14,7 +14,6 @@
                         </p>
                         <p style="padding-left: 160px;">
                             
-                            様
                         </p>
                     </div>
                 </div>
@@ -28,7 +27,6 @@
                         <tr class="text-center">
                             <th class="border-bottom border-dark" style="width:13%;">No</th>
                             <th class="border-bottom border-dark" style="width:18%;">商品名</th>
-                            <th class="border-bottom border-dark" style="width:15%;">商品カテゴリ</th>
                             <th class="border-bottom border-dark" style="width:15%;">値段</th>
                             <th class="border-bottom border-dark" style="width:15%;">個数</th>
                             <th class="border-bottom border-dark" style="width:15%;">小計</th>
@@ -36,32 +34,6 @@
                     </thead>
                     <tbody>
                             
-                                <tr class="text-center">
-                                    <th class="align-middle"></th>
-                                    <td class="align-middle">
-                                        
-                                    </td>
-                                    <td class="align-middle">
-                                        
-                                    </td>
-                                    <td class="align-middle">
-                                         円
-                                    </td>
-                                    <td class="align-middle">
-                                        <button type="button" class="btn btn-outline-dark">
-                                            
-                                        </button>
-                                        個
-                                    </td>
-                                    <td class="align-middle">
-                                       円
-                                
-                                    </td>
-
-                                    
-                                </tr>
-                            
-
                             <tr class="text-center">
                                 <th class="border-bottom-0 align-middle"></th>
                                 <td class="border-bottom-0 align-middle"></td>
@@ -70,7 +42,7 @@
                                 <td class="border-bottom-0 align-middle">合計</td>
                                 
                                     <td class="border-bottom-0 align-middle">
-                                        円
+                                        ¥円
                                     </td>
                             </tr>
 
@@ -84,7 +56,9 @@
                             </td>
                             <td class="border-0"></td>
                             <td class="border-0"></td>
-                            
+                            <td class="border-0">
+                                
+                            </td>
                             <td class="border-0 align-middle"></td>
                         </tr>
                     </tbody>
