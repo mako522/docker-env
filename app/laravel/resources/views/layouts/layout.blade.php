@@ -27,12 +27,18 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     中村屋
                 </a>
-                <button type='button' class='btn btn-primary' href="{{route('create.category')}}">追加</button>
+                <a href="{{route('create.time')}}">
+                <button type='button' class='btn btn-primary'>管理者時間追加</button>
+                </a>
+                <a href="">
+                <button type='button' class='btn btn-success'>口コミ</button>
+                </a>
             </div>
             <div class="my-navbar-control">
                 @if(Auth::check())
                 <span class="my-navbar-item">{{Auth::user()->name}}</span>
                 /
+                
                 <a href="#" id="logout" class="my-navbar-item">ログアウト</a>
                 <form id="logout-form" action="{{route('logout')}}" method="POST" style="display:none;">
                     @csrf

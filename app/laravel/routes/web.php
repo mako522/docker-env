@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\DisplayController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TimeselectController;
+use App\Http\Controllers\UpdateController;
+use App\Http\Controllers\DeleteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +21,7 @@ Auth::routes();
 
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/', [DisplayController::class, 'index']);
-    Route::get('/create_income',[RegistrationController::class,'createIncomeForm'])->name('create.income');
-    Route::post('/create_income',[RegistrationController::class,'createIncome']);
+    
 /*
 |--------------------------------------------------------------------------
 | カート内商品関連
@@ -35,9 +39,20 @@ Route::group(['middleware'=>'auth'],function(){
         Route::post('/add', 'ProductController@addCart')->name('addcart.post');
     });
 
-    Route::get('/category',[CategoryController::class,'createCategoryForm'])->name('create.category');
-    Route::post('/category',[CategoryController::class,'createCategory']);
+    Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
+        Route::get('/timeselect', [TimeselectController::class, 'selectTimeForm'])->name('select.time');
+        Route::post('/timeselect', [TimeselectController::class, 'selectTime'])->name('create.time');
 
+        Route::get('/addtime',[CategoryController::class,'createTimeForm'])->name('add.time');
+        Route::post('/addtime',[CategoryController::class,'createTime']);
+        
+        
+        Route::get('/edit/{id}', [UpdateController::class, 'edit'])->name('book.edit');
+        Route::post('/update/{id}', [UpdateController::class, 'update'])->name('book.update');
+        
+        Route::post('/destroy/{id}', [DeleteController::class, 'destroy'])->name('time.destroy');
+    });
+    
 // });
 // Route::resource('cartitem', 'CartController', ['only' => ['index']]);
 

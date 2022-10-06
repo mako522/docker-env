@@ -14,6 +14,9 @@ class User extends Authenticatable
     public function product(){
         return $this->hasMany('App\Product');
     }
+    public function time() { //1対多の「多」側なので複数形
+        return $this->hasMany('App\Time');
+    }
     
     use Notifiable;
 
