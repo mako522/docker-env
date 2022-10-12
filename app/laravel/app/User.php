@@ -17,7 +17,14 @@ class User extends Authenticatable
     public function time() { //1対多の「多」側なので複数形
         return $this->hasMany('App\Time');
     }
-    
+    public function posts()
+    {
+        return $this->hasMany('App\Review');
+    }
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
+    }
     use Notifiable;
 
     /**

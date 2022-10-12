@@ -6,6 +6,9 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TimeselectController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\DeleteController;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\LikesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +42,14 @@ Route::group(['middleware'=>'auth'],function(){
         Route::post('/add', 'ProductController@addCart')->name('addcart.post');
     });
 
+    Route::get('/posts/home', 'PostsController@index')->name('review');
+    Route::get('/posts/new', 'PostsController@new')->name('new');
+    Route::post('/posts','PostsController@store');
+
+    //いいね処理
+    Route::get('/posts/{review_id}/likes', 'LikesController@store');
+    Route::get('/likes/{like_id}', 'LikesController@destroy');
+
     Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
         Route::get('/timeselect', [TimeselectController::class, 'selectTimeForm'])->name('select.time');
         Route::post('/timeselect', [TimeselectController::class, 'selectTime'])->name('create.time');
@@ -52,6 +63,7 @@ Route::group(['middleware'=>'auth'],function(){
         
         Route::post('/destroy/{id}', [DeleteController::class, 'destroy'])->name('time.destroy');
     });
+    
     
 // });
 // Route::resource('cartitem', 'CartController', ['only' => ['index']]);

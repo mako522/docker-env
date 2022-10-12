@@ -30,7 +30,7 @@
                 <a href="{{route('create.time')}}">
                 <button type='button' class='btn btn-primary'>管理者時間追加</button>
                 </a>
-                <a href="">
+                <a href="{{route('review')}}">
                 <button type='button' class='btn btn-success'>口コミ</button>
                 </a>
             </div>
