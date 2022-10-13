@@ -42,13 +42,17 @@ Route::group(['middleware'=>'auth'],function(){
         Route::post('/add', 'ProductController@addCart')->name('addcart.post');
     });
 
-    Route::get('/posts/home', 'PostsController@index')->name('review');
+    Route::get('/posts/home', 'PostsController@index')->name('review');//一覧
+
+
     Route::get('/posts/new', 'PostsController@new')->name('new');
     Route::post('/posts','PostsController@store');
 
     //いいね処理
     Route::get('/posts/{review_id}/likes', 'LikesController@store');
     Route::get('/likes/{like_id}', 'LikesController@destroy');
+
+    
 
     Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
         Route::get('/timeselect', [TimeselectController::class, 'selectTimeForm'])->name('select.time');

@@ -27,12 +27,14 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     中村屋
                 </a>
-                <a href="{{route('create.time')}}">
-                <button type='button' class='btn btn-primary'>管理者時間追加</button>
-                </a>
-                <a href="{{route('review')}}">
-                <button type='button' class='btn btn-success'>口コミ</button>
-                </a>
+                <div class="text-right">
+                    <a href="{{route('create.time')}}">
+                    <button type='button' class='btn btn-primary'>管理者時間追加</button>
+                    </a>
+                    <a href="{{route('review')}}">
+                    <button type='button' class='btn btn-success'>口コミ</button>
+                    </a>
+                </div>
             </div>
             <div class="my-navbar-control">
                 @if(Auth::check())

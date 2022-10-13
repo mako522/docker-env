@@ -9,14 +9,21 @@ use Validator;
 
 class PostsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $reviews = Review::limit(10)
-            ->orderBy('created_at', 'desc')
-            ->get();
+            $query = Review::query();
+
+            $keyword = $request->input('keyword');
+            if (!empty($keyword)) {
+                $query->where('caption', 'like', '%' . $keyword . '%');
+            }
+    
+            $perpage = $request->input('perpage', 10);
             
-         // テンプレート「post/index.blade.php」を表示します。
-        return view('index', ['reviews' => $reviews]);
+    
+            $reviews = $query->paginate($perpage);
+            
+            return view('index', ['reviews' => $reviews->appends($request->except('page')), 'request'=>$request->except('page')]);
     }
     public function new()
     {
