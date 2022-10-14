@@ -1,5 +1,7 @@
 @extends('layouts.layout')
-
+@section('js')
+<script src="{{ asset('js/like.js') }}" defer></script>
+@endsection
 @section('content')
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('stylesheet')
@@ -45,11 +47,18 @@
         <div class="card-body">
           <div class="row parts">
             <div id="like-icon-post-{{ $review->id }}">
-              @if ($review->likedBy(Auth::user())->count() > 0)
-                <a class="loved hide-text" data-remote="true" rel="nofollow" data-method="DELETE" href="/likes/{{ $review->likedBy(Auth::user())->firstOrFail()->id }}">いいねを取り消す</a>
+            
+            
+            @if($like_model->like_exist(Auth::user()->id,$review->id))
+              <p class="favorite-marke">
+                <div class="js-like-toggle loved" href="" data-reviewid="{{ $review->id }}"><i class="fas fa-4x fa-heart"></i></div>
+              </p>
               @else
-                <a class="love hide-text" data-remote="true" rel="nofollow" data-method="POST" href="/posts/{{ $review->id }}/likes">いいね</a>
-              @endif
+              <p class="favorite-marke">
+                <div class="js-like-toggle" href="" data-postid="{{ $review->id }}"><i class="fas fa-4x fa-heart"></i></div>
+              </p>
+              @endif​
+              
             </div>
             <a class="comment" href="#"></a>
           </div>
@@ -67,3 +76,4 @@
 
 @endforeach
 @endsection
+

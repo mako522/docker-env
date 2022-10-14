@@ -43,14 +43,19 @@ Route::group(['middleware'=>'auth'],function(){
     });
 
     Route::get('/posts/home', 'PostsController@index')->name('review');//一覧
+    
+
+    Route::post('ajaxlike', 'PostsController@ajaxlike')->name('posts.ajaxlike');
 
 
     Route::get('/posts/new', 'PostsController@new')->name('new');
     Route::post('/posts','PostsController@store');
 
-    //いいね処理
-    Route::get('/posts/{review_id}/likes', 'LikesController@store');
-    Route::get('/likes/{like_id}', 'LikesController@destroy');
+
+    // //いいね処理
+    // Route::get('/posts/{review_id}/likes', 'LikesController@store');
+    // Route::get('/likes/{like_id}', 'LikesController@destroy');
+
 
     
 
@@ -68,6 +73,7 @@ Route::group(['middleware'=>'auth'],function(){
         Route::post('/destroy/{id}', [DeleteController::class, 'destroy'])->name('time.destroy');
     });
     
+
     
 // });
 // Route::resource('cartitem', 'CartController', ['only' => ['index']]);

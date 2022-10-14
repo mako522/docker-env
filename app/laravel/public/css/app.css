@@ -2968,27 +2968,7 @@ fieldset:disabled a.btn {
 .show > .btn-light.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(216, 217, 219, 0.5);
 }
-.love {
-  background-image: url("/images/images/parts5.png");
-  background-repeat: no-repeat;
-  height: 36px;
-  width: 36px;
-  background-size: 36px !important;
-}
-.loved {
-  background-image: url("/images/images/parts7.png");
-  background-repeat: no-repeat;
-  height: 36px;
-  width: 36px;
-  background-size: 36px !important;
-}
 
-.hide-text {
-  display: block;
-  overflow: hidden;
-  text-indent: 110%;
-  white-space: nowrap;
-}
 .btn-dark {
   color: #fff;
   background-color: #343a40;
@@ -4681,7 +4661,7 @@ input[type=button].btn-block {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
-  
+
   .navbar-expand-sm > .container,
   .navbar-expand-sm > .container-fluid,
   .navbar-expand-sm > .container-sm,
@@ -10857,6 +10837,10 @@ a.text-dark:focus {
 
 .invisible {
   visibility: hidden !important;
+}
+
+.loved i {
+  color: red !important;
 }
 
 @media print {

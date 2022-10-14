@@ -5,6 +5,7 @@
     
     <div style="width:700px;height:300px;background:#ced;border:1px solid #a7e;">スライド</div>
 </div>
+
 <div class="card-body">
     
     <div class="links">

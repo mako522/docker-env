@@ -8,26 +8,18 @@ use App\Review;
 use Auth;
 use Validator;
 
+
 class LikesController extends Controller
 {
-    public function __construct()
+    public function store($reviewId)
     {
-        $this->middleware('auth');
+        Auth::user()->like($reviewId);
+        return 'ok!'; //レスポンス内容
     }
-    public function store(Request $request)
-    {
-        $like = new Like;
-        $like->review_id = $request->review_id;
-        $like->user_id = Auth::user()->id;
-        $like->save();
 
-        
-        return redirect('/posts/home');
-    }
-    public function destroy(Request $request)
+    public function destroy($postId)
     {
-        $like = Like::find($request->like_id);
-        $like->delete();
-        return redirect('/posts/home');
+        Auth::user()->unlilikeke($reviewId);
+        return 'ok!'; //レスポンス内容
     }
 }

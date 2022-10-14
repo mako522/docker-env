@@ -11,6 +11,9 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/_ajaxlike.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/9c1865d12d.js" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -27,6 +30,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     中村屋
                 </a>
+                
                 <div class="text-right">
                     <a href="{{route('create.time')}}">
                     <button type='button' class='btn btn-primary'>管理者時間追加</button>
