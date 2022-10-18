@@ -1,7 +1,4 @@
 @extends('layouts.layout')
-@section('js')
-<script src="{{ asset('js/like.js') }}" defer></script>
-@endsection
 @section('content')
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('stylesheet')
@@ -33,7 +30,7 @@
   <div class="col-md-8 col-md-2 mx-auto">
     <div class="card-wrap">
       <div class="card">
-        <div class="card-header align-items-center d-flex">
+        <div class="card-header align-reviews-center d-flex">
           
           <a class="black-color no-text-decoration" title="{{ $review->user->name }}" href="/users/{{ $review->user->id }}">
             <strong>{{ $review->user->name }}</strong>
@@ -49,21 +46,24 @@
             <div id="like-icon-post-{{ $review->id }}">
             
             
-            @if($like_model->like_exist(Auth::user()->id,$review->id))
-              <p class="favorite-marke">
-                <div class="js-like-toggle loved" href="" data-reviewid="{{ $review->id }}"><i class="fas fa-4x fa-heart"></i></div>
-              </p>
-              @else
-              <p class="favorite-marke">
-                <div class="js-like-toggle" href="" data-postid="{{ $review->id }}"><i class="fas fa-4x fa-heart"></i></div>
-              </p>
-              @endif​
+            @if (!$review->isLikedBy(Auth::user()))
+            <span class="like">
+                <i class="fas fa-3x fa-heart like-toggle" data-review-id="{{ $review->id }}"></i>
+                <span class="like-counter">{{$review->like_count}}</span>
+            </span><!-- /.likes -->
+            @else
+              <span class="like">
+                  <i class="fas fa-3x fa-heart heart like-toggle liked" data-review-id="{{ $review->id }}"></i>
+                <span class="like-counter">{{$review->like_count}}</span>
+              </span><!-- /.likes -->
+            @endif
+            
               
             </div>
             <a class="comment" href="#"></a>
           </div>
           <div id="like-text-post-{{ $review->id }}">
-          @include('like_text')
+          
           </div>
           <div>
             <span><strong>{{ $review->user->name }}</strong></span>

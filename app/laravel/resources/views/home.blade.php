@@ -10,18 +10,13 @@
     
     <div class="links">
         <p>Today's Bread</p>
-        <p>パン１</p>
-            @foreach($products as $product)
-                <a href="/product/detail/{{$product->id}}">選択</a>
-                <p>パン２</p>
-                <a href="">選択</a>
-                <p>パン３</p>
-                <a href="">選択</a>
-            @endforeach
-            <form id="logout-form" action="" method="POST" style="display: none;">
-                @csrf
-            </form>
-        
+        @foreach($products as $product)
+        <p>{{$product->bread_name}}</p>
+            
+            <a href="{{ route('bread.detail',$product->id) }}">選択</a>
+            
+        @endforeach
+
     </div>
 </div>
 @endsection

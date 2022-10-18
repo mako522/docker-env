@@ -10839,8 +10839,8 @@ a.text-dark:focus {
   visibility: hidden !important;
 }
 
-.loved i {
-  color: red !important;
+.liked {
+  color: var(--pink) !important;
 }
 
 @media print {

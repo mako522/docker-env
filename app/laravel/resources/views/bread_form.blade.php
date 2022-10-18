@@ -23,10 +23,9 @@
 
                 {!! Form::open(['route' => ['addcart.get', 'class' => 'd-inline']]) !!}
 
-                    {{-- 画面遷移時にPOST送信 session保存に使用 --}}
                     {{ Form::hidden('bread_id', $bread->id) }}
+                    {{ Form::hidden('users_id', $user->id) }}
                     
-
                     <div class="form-row justify-content-center">
                         {!! Form::label('prodqty', '購入個数', ['class' => 'mt-1']) !!}
                         <div class="form-group col-sm-1">

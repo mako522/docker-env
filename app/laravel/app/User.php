@@ -8,8 +8,11 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    public function kart(){
-        return $this->hasMany('App\Kart');
+    public function order(){
+        return $this->hasMany('App\Order');
+    }
+    public function ordersdetail(){
+        return $this->hasMany('App\Ordersdetail');
     }
     public function product(){
         return $this->hasMany('App\Product');
@@ -17,11 +20,11 @@ class User extends Authenticatable
     public function time() { 
         return $this->hasMany('App\Time');
     }
-    public function posts()
+    public function post()
     {
         return $this->hasMany('App\Review');
     }
-    public function likes()
+    public function like()
     {
         return $this->hasMany('App\Like');
     }

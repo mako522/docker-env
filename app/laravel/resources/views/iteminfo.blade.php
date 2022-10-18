@@ -1,11 +1,7 @@
-
 @extends('layouts.layout')
 
 @section('content')
-{!! Form::open(['route' => ['addcart.post', 'class' => 'd-inline']]) !!}
-{{-- 画面遷移時にPOST送信 session保存に使用 --}}
-    {{ Form::hidden('products_id', $product->id) }}
-    {{ Form::hidden('users_id', $user->id) }}
+
     <main>
         <div class="container">
             <div class="jumbotron bg-white">
@@ -24,6 +20,12 @@
                         円
                     </p>
                 </div>
+
+                {!! Form::open(['route' => ['addcart.post', 'class' => 'd-inline']]) !!}
+
+                    {{-- 画面遷移時にPOST送信 session保存に使用 --}}
+                    {{ Form::hidden('products_id', $product->id) }}
+                    
 
                     <div class="form-row justify-content-center">
                         {!! Form::label('prodqty', '購入個数', ['class' => 'mt-1']) !!}

@@ -12,14 +12,17 @@ use Illuminate\Support\Facades\Hash;
 
 class DisplayController extends Controller
 {
+    
     public function breadDetail($id)
     {   
-        $product = \App\Product::findOrFail($id);
-        $user = \App\User::findOrFail($id);
+        $product = Product::find($id);
+        $user = User::find($id);
+        
         return view('iteminfo',[
             'product' => $product,
             'user' => $user,
         ]);
+        
     }
     public function index(){
         $product = new Product;
@@ -27,6 +30,6 @@ class DisplayController extends Controller
         $products = $product->all();
 
         return view('home',compact('products'));
-            
+        
     }
 }

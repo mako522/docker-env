@@ -24,6 +24,8 @@ Auth::routes();
 
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/', [DisplayController::class, 'index']);
+
+    Route::get('product/detail/{id}/',[DisplayController::class,'breadDetail'])->name('bread.detail');
     
 /*
 |--------------------------------------------------------------------------
@@ -31,21 +33,23 @@ Route::group(['middleware'=>'auth'],function(){
 |--------------------------------------------------------------------------
 */
 
-    Route::group(['prefix' => 'product'], function () {
-        Route::get('detail/{id}/',[DisplayController::class,'breadDetail'])->name('bread.detail');
-
-    });
 
     Route::resource('cartlist', 'ProductController', ['only' => ['index']]);
-    Route::group(["prefix" => 'iteminfo'], function() {
-        Route::get('/{id}', 'ProductController@show');
-        Route::post('/add', 'ProductController@addCart')->name('addcart.post');
-    });
+    Route::post('productInfo/addCart/cartListRemove', 'ProductController@remove')->name('itemRemove');
+    Route::post('productInfo/addCart','ProductController@addCart')->name('addcart.post');
+    
+    Route::post('productInfo/addCart/orderFinalize','ProductController@store')->name('orderFinalize');
+
+    // Route::resource('cartlist', 'ProductController', ['only' => ['index']]);
+    // Route::group(["prefix" => 'iteminfo'], function() {
+    //     Route::get('/{id}', 'ProductController@show');
+    //     Route::post('/add', 'ProductController@addCart')->name('addcart.post');
+    // });
 
     Route::get('/posts/home', 'PostsController@index')->name('review');//一覧
     
-
-    Route::post('ajaxlike', 'PostsController@ajaxlike')->name('posts.ajaxlike');
+    // Route::resource('products', 'PostsController');
+    // Route::post('/like_review', 'PostsController@like_review');
 
 
     Route::get('/posts/new', 'PostsController@new')->name('new');
@@ -56,8 +60,8 @@ Route::group(['middleware'=>'auth'],function(){
     // Route::get('/posts/{review_id}/likes', 'LikesController@store');
     // Route::get('/likes/{like_id}', 'LikesController@destroy');
 
-
     
+    Route::post('/like_review', 'LikesController@like')->name('reviews.like');
 
     Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
         Route::get('/timeselect', [TimeselectController::class, 'selectTimeForm'])->name('select.time');

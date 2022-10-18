@@ -26,8 +26,6 @@ class TimeselectController extends Controller
     public function selectTime(CreateData $request){
         $times = new Time;
 
-        var_dump($times);
-
         $times->time_name=$request->time_name;
         
         $times->save();
